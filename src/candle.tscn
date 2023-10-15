@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cstynndb7180p"]
+[gd_scene load_steps=6 format=3 uid="uid://cstynndb7180p"]
 
 [ext_resource type="Script" path="res://candle.gd" id="1_jij8f"]
 [ext_resource type="Texture2D" uid="uid://d2qdbgn4dl6c4" path="res://point-light.png" id="2_utotc"]
@@ -6,6 +6,12 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kf3ke"]
 radius = 12.0
 height = 48.0
+
+[sub_resource type="SystemFont" id="SystemFont_colnr"]
+
+[sub_resource type="Theme" id="Theme_ti16w"]
+default_font = SubResource("SystemFont_colnr")
+default_font_size = 32
 
 [node name="candle" type="Sprite2D"]
 script = ExtResource("1_jij8f")
@@ -43,5 +49,13 @@ texture = ExtResource("2_utotc")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(1, 21)
 shape = SubResource("CapsuleShape2D_kf3ke")
+
+[node name="Label" type="RichTextLabel" parent="."]
+offset_left = -73.0
+offset_top = -46.0
+offset_right = 73.0
+offset_bottom = 5.0
+theme = SubResource("Theme_ti16w")
+text = "Grab me!"
 
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

@@ -27,6 +27,7 @@ color = Color(0.0235294, 0.0235294, 0.0235294, 1)
 
 [node name="Candle" parent="." instance=ExtResource("1_7y5kf")]
 position = Vector2(318, 253)
+_hp = null
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

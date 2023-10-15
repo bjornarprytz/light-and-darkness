@@ -21,13 +21,14 @@ func _process(delta: float) -> void:
 	
 
 func check_answer(answer : String):
-	var result = solution == answer.replace(" ", "")
+	var answer_trimmed = answer.replace(" ", "")
+	var result = solution == answer_trimmed
 	
 	if (result):
 		var tween = create_tween()
 		tween.tween_property($CanvasModulate, 'color', Color.WHITE, 2.0)
-	else:
-		print("NAY")
+	elif (answer_trimmed != ""):
+		candle.shrink()
 
 func map_point_to_rect(point, screen_size, target_rect):
 	# Calculate the mapping for the X-coordinate
@@ -41,18 +42,14 @@ func map_point_to_rect(point, screen_size, target_rect):
 	return Vector2(x_mapped, y_mapped)
 
 func load_art():
-	var arts = []
+	var arts = [
+		"Conflux.jpg",
+		"GodhunterOctopus.jpg",
+		"KorSkyfisher.jpg",
+		"SkullFracture.jpg"
+	]
 	
-	var dir = DirAccess.open("res://img")
-	if dir:
-		dir.list_dir_begin()
-		var file_name = dir.get_next()
-		while file_name != "":
-			if file_name.ends_with(".jpg"):
-				arts.push_back(file_name)
-			file_name = dir.get_next()
-	else:
-		print("An error occurred when trying to access the path.")
+	
 	
 	var fn = arts.pick_random()
 	solution = fn.split(".")[0]
